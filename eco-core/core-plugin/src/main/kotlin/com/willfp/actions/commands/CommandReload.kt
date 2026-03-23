@@ -1,5 +1,6 @@
 package com.willfp.actions.commands
 
+import com.willfp.actions.actions.Actions
 import com.willfp.actions.plugin
 import com.willfp.eco.core.Prerequisite
 import com.willfp.eco.core.command.impl.Subcommand
@@ -18,6 +19,7 @@ object CommandReload : Subcommand(
             sender.sendMessage(
                 plugin.langYml.getMessage("reloaded", StringUtils.FormatOption.WITHOUT_PLACEHOLDERS)
                     .replace("%time%", plugin.reloadWithTime().toNiceString())
+                    .replace("%count%", Actions.values().size.toString())
             )
         }
         if (Prerequisite.HAS_FOLIA.isMet)
